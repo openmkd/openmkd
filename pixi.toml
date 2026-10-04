@@ -1,0 +1,11 @@
+[workspace]
+channels = ["conda-forge", "bioconda"]
+name = "snakemake-pixi"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[dependencies]
+snakemake = ">=9.27.0,<10"
+
+[environments.protein-alignment.dependencies]
+usalign = ">=20241201,<20241202"
