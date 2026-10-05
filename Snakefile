@@ -1,6 +1,7 @@
 rule all:
     input:
-        "protein_protonated.pqr"
+        "protein_protonated.pqr",
+        "ligands.sdf"
 
 rule protein_alignment:
     input:
@@ -18,3 +19,13 @@ rule protein_protonation:
         "protein_protonated.pqr"
     shell:
         "pixi run -e protein-protonation pdb2pqr --ff AMBER --with-ph 7.4 protein_aligned.pdb protein_protonated.pqr"
+
+rule ligand_microstate_generation:
+    input:
+        "ligand.smi"
+    output:
+        "ligands.sdf"
+    params:
+        script_path=f"{workflow.basedir}/scripts/generate_3d_microstates.py"
+    shell:
+        "pixi run -e ligand-microstate-generation python {params.script_path}"

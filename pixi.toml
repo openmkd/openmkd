@@ -2,7 +2,7 @@
 channels = ["conda-forge", "bioconda"]
 name = "snakemake-pixi"
 platforms = ["linux-64"]
-version = "0.2.0"
+version = "0.3.0"
 
 [dependencies]
 snakemake = ">=9.27.0,<10"
@@ -12,3 +12,7 @@ usalign = ">=20241201,<20241202"
 
 [environments.protein-protonation.dependencies]
 pdb2pqr = ">=3.6.1,<4"
+
+[environments.ligand-microstate-generation.dependencies]
+dimorphite-dl = ">=2.1.0,<3"
+rdkit = ">=2025.9.6,<2026"
